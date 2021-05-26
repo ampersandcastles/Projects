@@ -1,8 +1,8 @@
-require('dotenv').config();
-const Express = require('express');
+require("dotenv").config();
+const Express = require("express");
 const app = Express();
 app.use(Express.json());
-const controllers = require('./controllers');
+const controllers = require("./controllers");
 
 const dbConnection = require("./db");
 
@@ -11,12 +11,17 @@ const dbConnection = require("./db");
 
 // app.use('/', (req, res) => res.render('index'));
 
-app.use('/pies', controllers.piecontroller);
+app.use("/user", controllers.usercontroller);
+app.use("/pies", controllers.piecontroller);
 
 dbConnection
-    .authenticate()
-    .then(() => dbConnection.sync())
-    .then(() => {
-        app.listen(process.env.PORT, () => console.log(`[Server]: App is listening on ${process.env.PORT}`));
-    })
-    .catch((err) => {console.log(`[Server]: has crashed. Error is ${err}.`)})
+  .authenticate()
+  .then(() => dbConnection.sync())
+  .then(() => {
+    app.listen(process.env.PORT, () =>
+      console.log(`[Server]: App is listening on ${process.env.PORT}`)
+    );
+  })
+  .catch((err) => {
+    console.log(`[Server]: has crashed. Error is ${err}.`);
+  });
