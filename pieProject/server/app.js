@@ -3,6 +3,7 @@ const Express = require("express");
 const app = Express();
 app.use(Express.json());
 const controllers = require("./controllers");
+const middleware = require("./middleware");
 
 const dbConnection = require("./db");
 
@@ -10,6 +11,8 @@ const dbConnection = require("./db");
 // console.log(__dirname);
 
 // app.use('/', (req, res) => res.render('index'));
+
+app.use(middleware.headers);
 
 app.use("/user", controllers.usercontroller);
 app.use("/pies", controllers.piecontroller);
