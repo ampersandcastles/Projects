@@ -1,4 +1,4 @@
-import ClassComponentDemo from "./ClassComponentDemo";
+import ClassComponentDemo from "./ClassComponentProps";
 import "./App.css";
 
 function App() {
